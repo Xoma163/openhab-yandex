@@ -13,8 +13,11 @@ const fs = require('fs');
 const app = express();
 const https = require('https');
 
-const privateKey = fs.readFileSync(config.https.privateKey, 'utf8').replace(/\\n/gm, '\n');
-const certificate = fs.readFileSync(config.https.certificate, 'utf8').replace(/\\n/gm, '\n');
+process.env.JWT_PRIVATE_KEY.replace(/\\n/gm, '\n')
+
+
+const privateKey = fs.readFileSync(config.https.privateKey, 'utf8');
+const certificate = fs.readFileSync(config.https.certificate, 'utf8');
 const credentials = {
   key: privateKey,
   cert: certificate,
