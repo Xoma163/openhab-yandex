@@ -13,8 +13,8 @@ const fs = require('fs');
 const app = express();
 const https = require('https');
 
-const privateKey = fs.readFileSync(config.https.privateKey, 'utf8');
-const certificate = fs.readFileSync(config.https.certificate, 'utf8');
+const privateKey = fs.readFileSync(config.https.privateKey, 'utf8').replace(/\\n/gm, '\n');
+const certificate = fs.readFileSync(config.https.certificate, 'utf8').replace(/\\n/gm, '\n');
 const credentials = {
   key: privateKey,
   cert: certificate,
@@ -36,22 +36,22 @@ app.set('views', path.join(__dirname, './views'));
 app.use(express.static('views'));
 app.use(cookieParser());
 app.use(
-  bodyParser.json({
-    extended: false,
-  }),
+    bodyParser.json({
+      extended: false,
+    }),
 );
 app.use(
-  bodyParser.urlencoded({
-    extended: true,
-  }),
+    bodyParser.urlencoded({
+      extended: true,
+    }),
 );
 app.use(errorHandler());
 app.use(
-  session({
-    secret: 'keyboard cat',
-    resave: false,
-    saveUninitialized: false,
-  }),
+    session({
+      secret: 'keyboard cat',
+      resave: false,
+      saveUninitialized: false,
+    }),
 );
 app.use(passport.initialize());
 app.use(passport.session());
@@ -76,5 +76,6 @@ app.post('/provider/v1.0/user/devices/query', routes.user.query);
 app.post('/provider/v1.0/user/devices/action', routes.user.action);
 app.post('/provider/v1.0/user/unlink', routes.user.unlink);
 httpsServer.listen(config.https.port);
+console.log('hello listen')
 
 module.exports = app;
