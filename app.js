@@ -38,7 +38,7 @@ app.use(cookieParser());
 app.use(
   bodyParser.json({
     extended: false,
-  })
+  }),
 );
 app.use(
   bodyParser.urlencoded({
