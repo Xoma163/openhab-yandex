@@ -3,7 +3,7 @@
 // 3. Genera
 module.exports = {
   openhab: {
-    host: ['https://myopenhab.org'],
+    host: ['https://openhab-cloud.andrewsha.net/'],
   },
   mongodb: {
     hosts: ['127.0.0.1'],
@@ -12,8 +12,8 @@ module.exports = {
     password: '',
   },
   https: {
-    privateKey: '/mnt/data/root/private.pem',
-    certificate: '/mnt/data/root/cert.crt',
+    privateKey: '/etc/letsencrypt/live/andrewsha.net-0001/fullchain.pem',
+    certificate: '/etc/letsencrypt/live/andrewsha.net-0001/privkey.pem',
     port: 443,
   },
 };
