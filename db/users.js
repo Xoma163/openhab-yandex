@@ -108,7 +108,8 @@ async function checkOpenHabPassword(username, password) {
   );
 
   const url = `${config.openhab.host}/rest/uuid`;
-
+  console.log(headers)
+  console.log(url)
   let ohValid = false;
 
   await fetch(url, {
@@ -130,9 +131,11 @@ async function checkOpenHabPassword(username, password) {
     })
     .then((response) => {
       // Тело содержжит UUID
+      console.log(response);
     })
     .catch((error) => {
       // Тела не будет
+      console.log(error);
     });
   return ohValid;
 }
