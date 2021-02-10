@@ -12,8 +12,8 @@ module.exports = {
     password: '',
   },
   https: {
-    privateKey: '/etc/letsencrypt/live/andrewsha.net-0001/fullchain.pem',
-    certificate: '/etc/letsencrypt/live/andrewsha.net-0001/cert.pem',
+    privateKey: '/etc/letsencrypt/live/andrewsha.net-0001/privkey.pem',
+    certificate: '/etc/letsencrypt/live/andrewsha.net-0001/fullchain.pem',
     port: 11002,
   },
 };
